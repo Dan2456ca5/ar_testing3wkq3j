@@ -9,27 +9,6 @@
         src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
     <script
         src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-    <script>
-        function takeScreenshot() {
-            // Get the canvas element
-            const canvas = document.querySelector('canvas.a-canvas');
-
-            // Create an image element
-            const img = new Image();
-
-            // Render the scene and camera to the canvas
-            const renderer = document.querySelector('a-scene').systems.renderer;
-            renderer.render(renderer.scene, renderer.camera);
-
-            // Convert the canvas content to an image (PNG format)
-            img.src = canvas.toDataURL('image/png');
-
-            // Open the screenshot in a new window
-            const w = window.open('', '');
-            w.document.title = 'Screenshot';
-            w.document.body.appendChild(img);
-        }
-    </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -63,11 +42,32 @@
         </a-marker>
 
         <a-entity camera></a-entity>
-
-        <div style="position: fixed; top: 80px; width: 100%; text-align: center; z-index: 55;">
-            <button onclick="takeScreenshot()">Capture Screenshot</button>
-        </div>
     </a-scene>
+
+    <div style="position: fixed; top: 180px; width: 100%; text-align: center; z-index: 55;">
+        <button onclick="takeScreenshot()">Capture Screenshot</button>
+    </div>
+    <script>
+        function takeScreenshot() {
+            // Get the canvas element
+            const canvas = document.querySelector('canvas.a-canvas');
+
+            // Create an image element
+            const img = new Image();
+
+            // Render the scene and camera to the canvas
+            const renderer = document.querySelector('a-scene').systems.renderer;
+            renderer.render(renderer.scene, renderer.camera);
+
+            // Convert the canvas content to an image (PNG format)
+            img.src = canvas.toDataURL('image/png');
+
+            // Open the screenshot in a new window
+            const w = window.open('', '');
+            w.document.title = 'Screenshot';
+            w.document.body.appendChild(img);
+        }
+    </script>
 </body>
 
 </html>
