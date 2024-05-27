@@ -33,14 +33,44 @@
     </a-marker>
 
     <a-marker id="animated-markerC" type="pattern" preset="custom" url="assets/gecko_marker.patt"
-    raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerC">
-    <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-      animation-mixer="loop: repeat" gltf-model="#animated-assetC" class="clickable" gesture-handler></a-entity>
-  </a-marker>
+      raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerC">
+      <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
+        animation-mixer="loop: repeat" gltf-model="#animated-assetC" class="clickable" gesture-handler></a-entity>
+    </a-marker>
 
     <a-entity camera></a-entity>
   </a-scene>
 
- </body>
+  <script>
+    // document.querySelector('a-scene').components.screenshot.capture('perspective')
+
+    const video = document.querySelector("video");
+    const canvas = document.createElement("canvas");
+    video.pause();
+
+    // Obtain the view style data of the video
+    const style = window.getComputedStyle(video),
+      width = parseFloat(style.getPropertyValue('width')),
+      height = parseFloat(style.getPropertyValue('height')),
+      top = parseFloat(style.getPropertyValue('top')),
+      left = parseFloat(style.getPropertyValue('left'));
+
+    // The width and height of the video may exceed the screen to achieve a full screen effect, 
+    // so screenshots need to only capture the visible part of the video.
+    const imgLeft = left * video.videoWidth / width
+    const imgTop = top * video.videoHeight / height
+    const drawLeft = imgLeft > 0 ? 0 : imgLeft
+    const drawTop = imgTop > 0 ? 0 : imgTop
+    const drawWidth = video.videoWidth
+    const drawHeight = video.videoHeight
+    canvas.width = video.videoWidth + imgLeft * 2
+    canvas.height = video.videoHeight + imgTop * 2
+
+    // render
+    canvas.getContext('2d').drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
+    video.play()
+  </script>
+
+</body>
 
 </html>
