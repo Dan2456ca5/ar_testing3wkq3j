@@ -2,87 +2,77 @@
 <html>
 
 <head>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <script
-    src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-  <script
-    src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
-  <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
-    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
-    <a-assets>
-      <a-asset-item id="animated-asset" src="assets/asset.glb"></a-asset-item>
-      <a-asset-item id="animated-assetB" src="assets/colobus.glb"></a-asset-item>
-      <a-asset-item id="animated-assetC" src="assets/gecko.glb"></a-asset-item>
-    </a-assets>
+    <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
+        <a-assets>
+            <a-asset-item id="animated-asset" src="assets/asset.glb"></a-asset-item>
+            <a-asset-item id="animated-assetB" src="assets/colobus.glb"></a-asset-item>
+            <a-asset-item id="animated-assetC" src="assets/gecko.glb"></a-asset-item>
+        </a-assets>
 
-    <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
-      raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
-      <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-        animation-mixer="loop: repeat" gltf-model="#animated-asset" class="clickable" gesture-handler></a-entity>
-    </a-marker>
+        <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
+            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
+            <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
+                animation-mixer="loop: repeat" gltf-model="#animated-asset" class="clickable"
+                gesture-handler></a-entity>
+        </a-marker>
 
-    <a-marker id="animated-markerB" type="pattern" preset="custom" url="assets/colobus_marker.patt"
-      raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerB">
-      <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-        animation-mixer="loop: repeat" gltf-model="#animated-assetB" class="clickable" gesture-handler></a-entity>
-    </a-marker>
+        <a-marker id="animated-markerB" type="pattern" preset="custom" url="assets/colobus_marker.patt"
+            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerB">
+            <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
+                animation-mixer="loop: repeat" gltf-model="#animated-assetB" class="clickable"
+                gesture-handler></a-entity>
+        </a-marker>
 
-    <a-marker id="animated-markerC" type="pattern" preset="custom" url="assets/gecko_marker.patt"
-      raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerC">
-      <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-        animation-mixer="loop: repeat" gltf-model="#animated-assetC" class="clickable" gesture-handler></a-entity>
-    </a-marker>
+        <a-marker id="animated-markerC" type="pattern" preset="custom" url="assets/gecko_marker.patt"
+            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerC">
+            <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
+                animation-mixer="loop: repeat" gltf-model="#animated-assetC" class="clickable"
+                gesture-handler></a-entity>
+        </a-marker>
 
-    <a-entity camera></a-entity>
-  </a-scene>
-
-  <script>
-   function takeScreenshot() {
-    // Create a new window to display the screenshot
-    var w = window.open('', '');
-    w.document.title = "Screenshot";
-
-    // Create an image element
-    var img = new Image();
-
-    // Render the scene and camera
-    renderer.render(scene, camera);
-
-    // Get the canvas and context
-    var doubleImageCanvas = document.getElementById('doubleImage');
-    var context = doubleImageCanvas.getContext('2d');
-
-    // Define the visible area of the video (adjust as needed)
-    const imgLeft = left * video.videoWidth / width;
-    const imgTop = top * video.videoHeight / height;
-    const drawLeft = imgLeft > 0 ? 0 : imgLeft;
-    const drawTop = imgTop > 0 ? 0 : imgTop;
-    const drawWidth = video.videoWidth;
-    const drawHeight = video.videoHeight;
-
-    // Set canvas dimensions
-    canvas.width = video.videoWidth + imgLeft * 2;
-    canvas.height = video.videoHeight + imgTop * 2;
-
-    // Draw the video frame onto the canvas
-    context.drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
-
-    // Play the video (if paused earlier)
-    video.play();
-}
-
-  </script>
-<div style='position: fixed; top: 10px; width: 100%; text-align: center; z-index: 1;'>
-    <button onclick="takeScreenshot()">Capture Screenshot</button>
-</div>
+        <a-entity camera></a-entity>
 
 
+        <div style="position: fixed; top: 10px; width: 100%; text-align: center; z-index: 1;">
+            <button onclick="takeScreenshot()">Capture Screenshot</button>
+        </div>
 
+
+    </a-scene>
 </body>
+
+<script>
+    function takeScreenshot() {
+        // Get the canvas element
+        const canvas = document.querySelector('canvas.a-canvas');
+
+        // Create an image element
+        const img = new Image();
+
+        // Render the scene and camera to the canvas
+        const renderer = document.querySelector('a-scene').systems.renderer;
+        renderer.render(renderer.scene, renderer.camera);
+
+        // Convert the canvas content to an image (PNG format)
+        img.src = canvas.toDataURL('image/png');
+
+        // Open the screenshot in a new window
+        const w = window.open('', '');
+        w.document.title = 'Screenshot';
+        w.document.body.appendChild(img);
+    }
+</script>
+
 
 </html>
