@@ -33,9 +33,6 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
-    <div style="position: fixed; top: 40px; width: 100%; text-align: center; z-index: 1;">
-        <button onclick="takeScreenshot()">Capture Screenshot</button>
-    </div>
     <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
         <a-assets>
@@ -66,6 +63,11 @@
         </a-marker>
 
         <a-entity camera></a-entity>
+
+        <div style="position: fixed; top: 80px; width: 100%; text-align: center; z-index: 55;">
+            <button onclick="takeScreenshot()">Capture Screenshot</button>
+        </div>
     </a-scene>
 </body>
+
 </html>
