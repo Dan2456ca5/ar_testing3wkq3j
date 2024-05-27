@@ -38,9 +38,11 @@
       animation-mixer="loop: repeat" gltf-model="#animated-assetC" class="clickable" gesture-handler></a-entity>
   </a-marker>
 
-
     <a-entity camera></a-entity>
   </a-scene>
+
+  <script>document.querySelector('a-scene').components.screenshot.capture('perspective')</script>
+
 </body>
 
 </html>
