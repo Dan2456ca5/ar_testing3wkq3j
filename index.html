@@ -45,31 +45,13 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot2</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot1</button>
     </div>
     <script>
         function takeScreenshot() {
 
             // document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
             // document.querySelector('a-scene').components.screenshot.capture('perspective')
-
-            /*  // Get the canvas element
-             const canvas = document.querySelector('canvas.a-canvas');
- 
-             // Create an image element
-             const img = new Image();
- 
-             // Render the scene and camera to the canvas
-             const renderer = document.querySelector('a-scene').systems.renderer;
-             renderer.render(renderer.scene, renderer.camera);
- 
-             // Convert the canvas content to an image (PNG format)
-             img.src = canvas.toDataURL('image/png');
- 
-             // Open the screenshot in a new window
-             const w = window.open('', '');
-             w.document.title = 'Screenshot';
-             w.document.body.appendChild(img); */
 
             // open in new window like this
             //
@@ -132,8 +114,6 @@
                 images[src].src = sources[src];
             }
         }
-    </script>`
-    }
     </script>
 </body>
 
