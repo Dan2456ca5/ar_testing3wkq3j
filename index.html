@@ -9,6 +9,7 @@
         src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
     <script
         src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -45,34 +46,18 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot 99</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot 3</button>
     </div>
     <script>
         function takeScreenshot() {
-
-            // document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
-            // document.querySelector('a-scene').components.screenshot.capture('perspective')
-
-            const video = document.querySelector("video");
-            const canvas = document.createElement("canvas");
-            video.pause();
-
-            let v_width = video.clientWidth * 2;
-            let v_height = video.clientHeight * 2;
-
-            canvas.width = v_width;
-            canvas.height = v_height;
-
-            let element = document.querySelector('video'),
-                style = window.getComputedStyle(element),
-                top = style.getPropertyValue('top');
-
-            canvas.getContext('2d').drawImage(video, 0, parseFloat(top), v_width, v_height);
-
-            let imgData = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
-
-            canvas.getContext('2d')
-                .drawImage(imgData, 0, 0, v_width, v_height);
+            html2canvas(document.getElementById("scene"), {
+                onrendered: function (canvas) {
+                    var link = document.createElement("a");
+                    link.href = canvas.toDataURL("image/png");
+                    link.download = "screenshot.png";
+                    link.click();
+                }
+            });
         }
     </script>
 </body>
