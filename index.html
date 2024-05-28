@@ -12,6 +12,7 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+    <canvas width='640' height='480' style='visibility:hidden;' id='doubleImage'>
     <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
         <a-assets>
@@ -44,10 +45,10 @@
         <a-entity camera></a-entity>
     </a-scene>
 
-    <canvas width='640' height='480' style='visibility:hidden;' id='doubleImage'></canvas>
+    </canvas>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot 08</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot</button>
     </div>
     <script>
         function takeScreenshot() {
