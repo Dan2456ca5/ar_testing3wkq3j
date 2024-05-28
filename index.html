@@ -49,6 +49,10 @@
     </div>
     <script>
         function takeScreenshot() {
+
+            document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
+            document.querySelector('a-scene').components.screenshot.capture('perspective')
+
             // Get the canvas element
             const canvas = document.querySelector('canvas.a-canvas');
 
