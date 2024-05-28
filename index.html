@@ -45,15 +45,57 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot3</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot8</button>
     </div>
     <script>
         function takeScreenshot() {
 
             // document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
-            document.querySelector('a-scene').components.screenshot.capture('perspective')
+            // document.querySelector('a-scene').components.screenshot.capture('perspective')
 
-           
+            /*  // Get the canvas element
+             const canvas = document.querySelector('canvas.a-canvas');
+ 
+             // Create an image element
+             const img = new Image();
+ 
+             // Render the scene and camera to the canvas
+             const renderer = document.querySelector('a-scene').systems.renderer;
+             renderer.render(renderer.scene, renderer.camera);
+ 
+             // Convert the canvas content to an image (PNG format)
+             img.src = canvas.toDataURL('image/png');
+ 
+             // Open the screenshot in a new window
+             const w = window.open('', '');
+             w.document.title = 'Screenshot';
+             w.document.body.appendChild(img); */
+
+            const video = document.querySelector("video");
+            const canvas = document.createElement("canvas");
+            video.pause();
+
+            // Obtain the view style data of the video
+            const style = window.getComputedStyle(video),
+                width = parseFloat(style.getPropertyValue('width')),
+                height = parseFloat(style.getPropertyValue('height')),
+                top = parseFloat(style.getPropertyValue('top')),
+                left = parseFloat(style.getPropertyValue('left'));
+
+            // The width and height of the video may exceed the screen to achieve a full screen effect, 
+            // so screenshots need to only capture the visible part of the video.
+            const imgLeft = left * video.videoWidth / width
+            const imgTop = top * video.videoHeight / height
+            const drawLeft = imgLeft > 0 ? 0 : imgLeft
+            const drawTop = imgTop > 0 ? 0 : imgTop
+            const drawWidth = video.videoWidth
+            const drawHeight = video.videoHeight
+            canvas.width = video.videoWidth + imgLeft * 2
+            canvas.height = video.videoHeight + imgTop * 2
+
+            // render
+            canvas.getContext('2d').drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
+            video.play()
         }
     </script>
 </body>
