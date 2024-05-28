@@ -9,21 +9,6 @@
         src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
     <script
         src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
-    <style>
-        #takePhotoButton {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 24px;
-            color: white;
-            background-color: #007bff;
-            border: none;
-            cursor: pointer;
-            z-index: 999;
-            /* Ensure it's on top of everything */
-        }
-    </style>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -59,37 +44,31 @@
         <a-entity camera></a-entity>
     </a-scene>
 
-    <button id="takePhotoButton">Take Photo</button>
-
+    <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot123</button>
+    </div>
     <script>
-        document.getElementById('takePhotoButton').addEventListener('click', function () {
-            const sceneCanvas = document.querySelector('canvas');
-            if (sceneCanvas) {
-                html2canvas(document.body).then(function (canvas) {
-                    // Create a canvas to merge them
-                    var finalCanvas = document.createElement('canvas');
-                    var ctx = finalCanvas.getContext('2d');
+        function takeScreenshot() {
+            // Get the canvas element
+            const canvas = document.querySelector('canvas.a-canvas');
 
-                    // Set dimensions
-                    finalCanvas.width = window.innerWidth;
-                    finalCanvas.height = window.innerHeight;
+            // Create an image element
+            const img = new Image();
 
-                    // Draw the AR content
-                    ctx.drawImage(sceneCanvas, 0, 0);
+            // Render the scene and camera to the canvas
+            const renderer = document.querySelector('a-scene').systems.renderer;
+            renderer.render(renderer.scene, renderer.camera);
 
-                    // Draw the html2canvas result
-                    ctx.drawImage(canvas, 0, 0);
+            // Convert the canvas content to an image (PNG format)
+            img.src = canvas.toDataURL('image/png');
 
-                    // Convert to DataURL or Blob
-                    var dataUrl = finalCanvas.toDataURL('image/png');
-                    var link = document.createElement('a');
-                    link.href = dataUrl;
-                    link.download = 'combined-ar-photo.png';
-                    link.click();
-                });
-            }
-        });
-
+            // Open the screenshot in a new window
+            const w = window.open('', '');
+            w.document.title = 'Screenshot';
+            w.document.body.appendChild(img);
+        }
+        // Call the function when the button is clicked
+        document.querySelector('button').addEventListener('click', takeScreenshot);
     </script>
 </body>
 
