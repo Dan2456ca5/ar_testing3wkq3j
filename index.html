@@ -45,12 +45,12 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot123</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot</button>
     </div>
     <script>
         function takeScreenshot() {
             // Get the canvas element
-            const canvas = document.querySelector('canvas.a-canvas');
+            const canvas = document.querySelector('a-scene');
 
             // Create an image element
             const img = new Image();
