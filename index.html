@@ -45,7 +45,7 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot11</button>
     </div>
     <script>
         function takeScreenshot() {
@@ -57,17 +57,27 @@
             const canvas = document.createElement("canvas");
             video.pause();
 
-            let v_width = video.clientWidth * 2;
-            let v_height = video.clientHeight * 2;
+            // Obtain the view style data of the video
+            const style = window.getComputedStyle(video),
+                width = parseFloat(style.getPropertyValue('width')),
+                height = parseFloat(style.getPropertyValue('height')),
+                top = parseFloat(style.getPropertyValue('top')),
+                left = parseFloat(style.getPropertyValue('left'));
 
-            canvas.width = v_width;
-            canvas.height = v_height;
+            // The width and height of the video may exceed the screen to achieve a full screen effect, 
+            // so screenshots need to only capture the visible part of the video.
+            const imgLeft = left * video.videoWidth / width
+            const imgTop = top * video.videoHeight / height
+            const drawLeft = imgLeft > 0 ? 0 : imgLeft
+            const drawTop = imgTop > 0 ? 0 : imgTop
+            const drawWidth = video.videoWidth
+            const drawHeight = video.videoHeight
+            canvas.width = video.videoWidth + imgLeft * 2
+            canvas.height = video.videoHeight + imgTop * 2
 
-            let element = document.querySelector('video'),
-                style = window.getComputedStyle(element),
-                top = style.getPropertyValue('top');
-
-            canvas.getContext('2d').drawImage(video, 0, parseFloat(top), v_width, v_height);
+            // render
+            canvas.getContext('2d').drawImage(video, drawLeft, drawTop, drawWidth, drawHeight);
+            video.play()
 
             let imgData = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
 
