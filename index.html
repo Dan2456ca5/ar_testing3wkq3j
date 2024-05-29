@@ -45,7 +45,7 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot9</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot22</button>
     </div>
     <script>
         function takeScreenshot() {
@@ -53,29 +53,26 @@
             // document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
             // document.querySelector('a-scene').components.screenshot.capture('perspective')
 
-            document.querySelector("video").pause();
-
-            const video = document.getElementsByTagName("video")[0];
-
+            const video = document.querySelector("video");
             const canvas = document.createElement("canvas");
+            video.pause();
 
-            var window_width = $(window).outerWidth(); var window_height = $(window).outerHeight();
+            let v_width = video.clientWidth * 2;
+            let v_height = video.clientHeight * 2;
 
+            canvas.width = v_width;
+            canvas.height = v_height;
 
-            var v_width = $(video).outerWidth();
-            var v_height = $(video).outerHeight();
+            let element = document.querySelector('video'),
+                style = window.getComputedStyle(element),
+                top = style.getPropertyValue('top');
 
-            var a_width = document.querySelector('a-scene').components.screenshot.data.width * 0.5;
-            var a_height = document.querySelector('a-scene').components.screenshot.data.height * 0.5;
-            canvas.width = $(window).outerWidth();
-            canvas.height = $(window).outerHeight();
+            canvas.getContext('2d').drawImage(video, 0, parseFloat(top), v_width, v_height);
 
-            canvas.getContext('2d').drawImage(video, 0, parseFloat($("video").css("top")), v_width, v_height);
-
-            var imgData = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
+            let imgData = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
 
             canvas.getContext('2d')
-                .drawImage(imgData, 0, 0, window_width, window_height);
+                .drawImage(imgData, 0, 0, v_width, v_height);
 
             if (window.navigator.msSaveOrOpenBlob) {
                 var blobObject = canvas.msToBlob();
