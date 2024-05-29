@@ -45,7 +45,7 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot 987</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot</button>
     </div>
     <script>
         function takeScreenshot() {
@@ -71,32 +71,7 @@
 
             let imgData = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
 
-            // canvas.getContext('2d').drawImage(imgData, 0, 0, v_width, v_height);
-
-
-
-            let resizedCanvas = document.createElement("canvas");
-            let resizedContext = resizedCanvas.getContext("2d");
-
-            resizedCanvas.height = height;
-            resizedCanvas.width = width;
-
-            if (width > height) {
-                // Landscape
-                resizedContext.drawImage(imgData, 0, 0, width, height);
-            } else {
-                // Portrait
-                var scale = height / width;
-                var scaledHeight = imgData.width * scale;
-                var scaledWidth = imgData.height * scale;
-                var marginLeft = (imgData.width - scaledWidth) / 2;
-                resizedContext.drawImage(imgData, marginLeft, 0, scaledWidth, scaledHeight);
-            }
-
-            // return resizedCanvas.toDataURL();
-
-
-
+            canvas.getContext('2d').drawImage(imgData, 0, 0, v_width, v_height);
 
             if (window.navigator.msSaveOrOpenBlob) {
                 var blobObject = canvas.msToBlob();
