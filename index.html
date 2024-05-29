@@ -45,7 +45,7 @@
     </a-scene>
 
     <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
-        <button type="button" onclick="takeScreenshot()">Capture Screenshot 92</button>
+        <button type="button" onclick="takeScreenshot()">Capture Screenshot 444</button>
     </div>
     <script>
         function takeScreenshot() {
@@ -71,7 +71,7 @@
 
             let imgData = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
 
-            canvas.getContext('2d').drawImage(imgData, 0, 0, v_width, v_height);
+            // canvas.getContext('2d').drawImage(imgData, 0, 0, v_width, v_height);
 
 
 
@@ -83,14 +83,14 @@
 
             if (width > height) {
                 // Landscape
-                resizedContext.drawImage(origCanvas, 0, 0, width, height);
+                resizedContext.drawImage(imgData, 0, 0, width, height);
             } else {
                 // Portrait
                 var scale = height / width;
-                var scaledHeight = origCanvas.width * scale;
-                var scaledWidth = origCanvas.height * scale;
-                var marginLeft = (origCanvas.width - scaledWidth) / 2;
-                resizedContext.drawImage(origCanvas, marginLeft, 0, scaledWidth, scaledHeight);
+                var scaledHeight = imgData.width * scale;
+                var scaledWidth = imgData.height * scale;
+                var marginLeft = (imgData.width - scaledWidth) / 2;
+                resizedContext.drawImage(imgData, marginLeft, 0, scaledWidth, scaledHeight);
             }
 
             return resizedCanvas.toDataURL();
