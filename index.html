@@ -34,7 +34,7 @@
         </a-assets>
 
         <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
-            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
+            raycaster="objects: .clickable" emitevents="true" id="markerA">
             <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
                 animation-mixer="loop: repeat" gltf-model="#animated-asset" class="clickable" gesture-handler
                 position="1.5 0 0"></a-entity>
@@ -42,8 +42,7 @@
             <a-image id="clothlabel_a" src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"
                 width="1" height="1" position="0 0 0" rotation="-90 0 0" gesture-handler></a-image>
             <a-image id="clickme" src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clickme.png" width="0.5"
-                height="0.5" position="0 0 1" rotation="-180 0 0" gesture-handler link="href: https://www.google.com"
-                cursor="fuse: false; rayOrigin: mouse;"></a-image>
+                height="0.5" position="0 0 1" rotation="-180 0 0" gesture-handler link="href: https://www.google.com"></a-image>
         </a-marker>
 
         <a-marker id="animated-markerB" type="pattern" preset="custom" url="assets/colobus_marker.patt"
@@ -60,7 +59,7 @@
                 gesture-handler></a-entity>
         </a-marker>
 
-        <a-entity camera></a-entity>
+        <a-entity camera cursor="fuse: false; rayOrigin: mouse;"></a-entity>
     </a-scene>
 
     <!-- <div style="position: fixed; top: 50px; left: 10px; width: 100%; text-align: center; z-index: 55;">
