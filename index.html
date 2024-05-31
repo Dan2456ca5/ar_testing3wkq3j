@@ -36,19 +36,22 @@
         <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
             raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
             <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-                animation-mixer="loop: repeat" gltf-model="#animated-asset" class="clickable"
-                gesture-handler position="2 0 0"></a-entity>
+                animation-mixer="loop: repeat" gltf-model="#animated-asset" class="clickable" gesture-handler
+                position="0 0.5 0"></a-entity>
 
             <a-image id="clothlabel_a" width="1" height="1" position="0 0 0" rotation="-90 0 0" class="clickable"
                 gesture-handler src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"
+                cursor="fuse: false; rayOrigin: mouse;"></a-image>
+            <a-image id="clothlabel_a" width="1" height="1" position="0 0.8 0" rotation="-90 0 0" class="clickable"
+                gesture-handler src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clickme.png"
                 link="href: https://www.google.com" cursor="fuse: false; rayOrigin: mouse;"></a-image>
         </a-marker>
 
         <a-marker id="animated-markerB" type="pattern" preset="custom" url="assets/colobus_marker.patt"
             raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerB">
             <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-                animation-mixer="loop: repeat" gltf-model="#animated-assetB" class="clickable"
-                gesture-handler scale="4 4 4"></a-entity>
+                animation-mixer="loop: repeat" gltf-model="#animated-assetB" class="clickable" gesture-handler
+                rotation="-90 0 0" scale="4 4 4"></a-entity>
         </a-marker>
 
         <a-marker id="animated-markerC" type="pattern" preset="custom" url="assets/gecko_marker.patt"
