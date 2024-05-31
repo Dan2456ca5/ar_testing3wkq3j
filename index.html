@@ -31,7 +31,6 @@
             <a-asset-item id="animated-asset" src="assets/asset.glb"></a-asset-item>
             <a-asset-item id="animated-assetB" src="assets/colobus.glb"></a-asset-item>
             <a-asset-item id="animated-assetC" src="assets/gecko.glb"></a-asset-item>
-            <!-- <img id="clothlabel_a" src="clothlabel_a.png"> -->
         </a-assets>
 
         <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
@@ -40,8 +39,8 @@
                 animation-mixer="loop: repeat" gltf-model="#animated-asset" class="clickable"
                 gesture-handler></a-entity>
 
-            <a-image id="clothlabel_a" rotation="-90 0 0" width="1" height="1"
-                src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"></a-image>
+            <a-image id="clothlabel_a" width="1" height="1" position="0 0 0" rotation="-90 0 0" class="clickable"
+                gesture-handler src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"></a-image>
         </a-marker>
 
         <a-marker id="animated-markerB" type="pattern" preset="custom" url="assets/colobus_marker.patt"
@@ -49,8 +48,7 @@
             <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
                 animation-mixer="loop: repeat" gltf-model="#animated-assetB" class="clickable"
                 gesture-handler></a-entity>
-            <a-image id="clothlabel_a" rotation="0 0 0" width="2" height="2"
-                src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"></a-image>
+
         </a-marker>
 
         <a-marker id="animated-markerC" type="pattern" preset="custom" url="assets/gecko_marker.patt"
@@ -67,7 +65,7 @@
         <button type="button" onclick="takeScreenshot()">Capture Screenshot</button>
     </div> -->
 
-    <!-- <button id="takePhotoButton">Take Photo</button> Just keep for ref -->
+    <!-- <button id="takePhotoButton">Take Photo</button> Not related to following js code, just keep for ref -->
 
     <!-- <script>
         function takeScreenshot() {
