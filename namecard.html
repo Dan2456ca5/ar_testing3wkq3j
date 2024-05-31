@@ -13,7 +13,8 @@
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; patternRatio:0.80;" id="scene" embedded
         gesture-detector>
 
-        <a-marker type="pattern" url="assets/marker.patt">
+        <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
+            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
 
             <a-image id="clothlabel_a" width="1" height="1" position="0 0 0" rotation="-90 0 0"
                 src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"></a-image>
