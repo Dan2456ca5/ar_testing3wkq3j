@@ -11,7 +11,7 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
-    <a-scene vr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
+    <a-scene xr-mode-ui="enabled: false;" loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
 
         <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
@@ -20,9 +20,9 @@
             <a-image id="clothlabel_a" src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"
                 width="1" height="1" position="0 0 0" rotation="-90 0 0" gesture-handler></a-image>
 
-            <a-image id="clickme" src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clickme.png" width="1"
-                height="0.5" position="-1 0 1" rotation="-90 0 0" link="href: https://www.google.com" class="clickable"
-                gesture-handler></a-image>
+            <a-image id="clickme" width="1" height="0.5" position="-1 0 1" rotation="-90 0 0"
+                src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clickme.png"
+                link="href: https://www.google.com" class="clickable" gesture-handler></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>
