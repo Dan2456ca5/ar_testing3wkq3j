@@ -15,7 +15,7 @@
         arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" embedded gesture-detector>
 
         <a-assets>
-           <img id="clickme" src="assets/clickme.png">
+            <img id="clickme" src="assets/clickme.png">
         </a-assets>
 
         <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
@@ -24,9 +24,11 @@
             <a-image id="clothlabel_a" src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clothlabel_a.png"
                 width="1" height="1" position="0 0 0" rotation="-90 0 0" gesture-handler></a-image>
 
-            <!--  <a-image id="clickme" width="1" height="0.5" position="-1 0 1" rotation="-90 0 0" src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clickme.png" link="href: https://www.google.com" class="clickable" gesture-handler></a-image> -->
+            <!-- <a-image id="clickme" width="1" height="0.5" position="-1 0 1" rotation="-90 0 0"
+                src="https://dan2456ca5.github.io/ar_testing3wkq3j/assets/clickme.png"
+                link="href: https://www.google.com" class="clickable" gesture-handler></a-image> -->
 
-            <a-image src="#clickme" link="href: https://www.google.com"></a-image>
+            <a-image src="#clickme" width="1" height="0.5" position="-1 0 1" rotation="-90 0 0" link="href: https://www.google.com" class="clickable" gesture-handler></a-image>
         </a-marker>
 
         <a-entity camera></a-entity>
