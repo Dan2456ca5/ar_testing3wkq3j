@@ -32,7 +32,6 @@
             <a-asset-item id="animated-assetB" src="assets/mudskipper6_ar.glb"></a-asset-item>
             <a-asset-item id="animated-assetC" src="assets/gecko.glb"></a-asset-item>
             <a-asset-item id="animated-assetD" src="assets/frog1.glb"></a-asset-item>
-            <!-- <a-asset-item id="animated-assetE" src="assets/Sparrow_Animations.glb"></a-asset-item> -->
         </a-assets>
 
         <a-marker id="animated-marker" type="pattern" preset="custom" url="assets/marker.patt"
@@ -67,13 +66,6 @@
                 animation-mixer="loop: repeat" gltf-model="#animated-assetD" class="clickable" gesture-handler
                 rotation="-25 0 10"></a-entity>
         </a-marker>
-
-        <!-- <a-marker id="animated-markerE" type="pattern" preset="custom" url="assets/pattern-label.patt"
-            raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerE">
-            <a-entity id="bowser-model" scale="0.2104836260929223 0.2104836260929223 0.2104836260929223"
-                animation-mixer="loop: repeat" gltf-model="#animated-assetE" class="clickable" gesture-handler
-                position="0 0 0"></a-entity>
-        </a-marker> -->
 
         <a-entity camera></a-entity>
     </a-scene>
